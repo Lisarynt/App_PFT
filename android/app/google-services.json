@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "954459124782",
+    "project_id": "financial-tracker-afcca",
+    "storage_bucket": "financial-tracker-afcca.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954459124782:android:5a8676e3ea8e04d3479bbf",
+        "android_client_info": {
+          "package_name": "com.example.uas_pft"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxiDI95GTpwRkTWmyYd6ZS4oJP_ZRgCS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
