@@ -10,12 +10,10 @@ class TransactionProvider extends ChangeNotifier {
   bool _isLoading = false;
   String? _errorMessage;
 
-  // ===================== GETTERS =====================
+  // GETTERS
   List<TransactionModel> get transactions => _transactions;
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
-
-  // ===================== API CALL =====================
 
   // GET
   Future<void> getTransactions(String userId) async {
@@ -87,7 +85,7 @@ class TransactionProvider extends ChangeNotifier {
     }
   }
 
-  // ===================== CALCULATION =====================
+  // CALCULATION
 
   double getTotalIncome() {
     return _transactions
@@ -123,7 +121,7 @@ class TransactionProvider extends ChangeNotifier {
     );
   }
 
-  // ===================== CATEGORY REPORT =====================
+  // CATEGORY REPORT
 
 // Total pengeluaran per kategori
 Map<String, double> getSpendingByCategory() {
@@ -150,7 +148,7 @@ Map<String, double> getIncomeByCategory() {
 }
 
 
-  // ===================== UTILS =====================
+  // UTILS
 
   void clearError() {
     _errorMessage = null;

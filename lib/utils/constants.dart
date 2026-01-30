@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // APP COLORS
 // ======================
 class AppColors {
-  // COLORS UNTUK LOGIN/REGISTER (JANGAN DIUBAH!)
+  // COLORS UNTUK LOGIN/REGISTER
   static const primary = Color(0xFF5B67CA);
   static const secondary = Color(0xFF9055FF);
   static const background = Color(0xFFF8F9FE);
@@ -16,9 +16,9 @@ class AppColors {
   static const income = Color(0xFF00D09E);
   static const expense = Color(0xFFFF6B6B);
   
-  // COLORS TAMBAHAN UNTUK DASHBOARD (BARU)
-  static const incomeBg = Color(0xFFD1FAE5);       // Light green
-  static const expenseBg = Color(0xFFFEE2E2);      // Light red
+  // COLORS UNTUK DASHBOARD
+  static const incomeBg = Color(0xFFD1FAE5);       
+  static const expenseBg = Color(0xFFFEE2E2);     
   static const white = Color(0xFFFFFFFF);
   static const black = Color(0xFF000000);
   static const cardBg = Color(0xFFFFFFFF);
@@ -30,28 +30,23 @@ class AppColors {
 // APP CONSTANTS
 // ======================
 class AppConstants {
-  // CURRENCY API (SUDAH ADA)
   static const String currencyApiKey = '00f6c996f0bb00ac7245b00a';
   static const String currencyApiUrl = 'https://v6.exchangerate-api.com/v6/';
   static const String defaultCurrency = 'IDR';
   
-  // APP INFO (BARU)
   static const String appName = 'Money Tracker';
   static const String appVersion = '1.0.0';
   static const String appTagline = 'Level up finansialmu!';
   
-  // ASSETS PATHS (BARU)
-  static const String bgLogin = 'assets/img/bglogin.png';    // Untuk login/register
-  static const String bgApp = 'assets/img/bgapp.png';        // Untuk dashboard/app (ganti nama sesuai file kamu)
+  static const String bgLogin = 'assets/img/bglogin.png';  
+  static const String bgApp = 'assets/img/bgapp.png';  
   
-  // PIXEL DESIGN CONSTANTS (BARU - UNTUK DASHBOARD)
   static const double pixelBorderWidth = 3.0;
   static const double pixelBorderWidthThin = 2.0;
   static const double pixelShadowOffset = 4.0;
   static const double pixelCardRadius = 0.0;
   static const double pixelButtonRadius = 12.0;
   
-  // SPACING (BARU)
   static const double spacingXS = 4.0;
   static const double spacingS = 8.0;
   static const double spacingM = 12.0;
@@ -59,7 +54,7 @@ class AppConstants {
   static const double spacingXL = 20.0;
   static const double spacingXXL = 24.0;
   
-  // FONT SIZES (BARU)
+  // FONT SIZES
   static const double fontSizeXS = 10.0;
   static const double fontSizeS = 12.0;
   static const double fontSizeM = 14.0;
@@ -68,7 +63,7 @@ class AppConstants {
   static const double fontSizeXXL = 24.0;
   static const double fontSizeTitle = 32.0;
   
-  // ICON SIZES (BARU)
+  // ICON SIZES
   static const double iconSizeS = 16.0;
   static const double iconSizeM = 24.0;
   static const double iconSizeL = 32.0;
@@ -76,7 +71,7 @@ class AppConstants {
 }
 
 // ======================
-// TRANSACTION CATEGORIES (SUDAH ADA)
+// TRANSACTION CATEGORIES
 // ======================
 class TransactionCategories {
   static const List<String> expenseCategories = [
@@ -115,7 +110,7 @@ class TransactionCategories {
     'Lainnya': '📦',
   };
   
-  // CATEGORY COLORS (BARU - UNTUK DASHBOARD)
+  // CATEGORY COLORS
   static const Map<String, Color> categoryColors = {
     'Makanan & Minuman': Color(0xFFFF6B6B),
     'Transport': Color(0xFF5B67CA),
@@ -134,7 +129,7 @@ class TransactionCategories {
 }
 
 // ======================
-// PIXEL DECORATIONS (BARU - UNTUK DASHBOARD)
+// PIXEL DECORATIONS
 // ======================
 class PixelDecorations {
   static BoxDecoration pixelCard({
@@ -201,7 +196,7 @@ class PixelDecorations {
 }
 
 // ======================
-// TEXT STYLES (BARU - UNTUK DASHBOARD)
+// TEXT STYLES
 // ======================
 class PixelTextStyles {
   static const String fontFamily = 'Minecraftia';
@@ -263,10 +258,9 @@ class PixelTextStyles {
 }
 
 // ======================
-// PIXEL BACKGROUND WIDGETS (BARU)
+// PIXEL BACKGROUND WIDGETS
 // ======================
 
-// Background untuk Login/Register (JANGAN DIPAKAI DI LOGIN/REGISTER KARENA MEREKA UDAH HANDLE SENDIRI)
 class PixelBackgroundAuth extends StatelessWidget {
   final Widget child;
   

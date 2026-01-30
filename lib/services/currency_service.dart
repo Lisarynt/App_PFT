@@ -3,12 +3,9 @@ import 'dart:convert';
 import '../utils/constants.dart';
 
 class CurrencyService {
-  // Format URL: https://v6.exchangerate-api.com/v6/YOUR_API_KEY/latest/USD
-  // Response format berbeda dengan v4 (tanpa API key)
   
   Future<Map<String, dynamic>> getExchangeRates(String baseCurrency) async {
     try {
-      // Build URL dengan API Key
       final url = '${AppConstants.currencyApiUrl}${AppConstants.currencyApiKey}/latest/$baseCurrency';
       
       final response = await http.get(Uri.parse(url));
@@ -16,9 +13,7 @@ class CurrencyService {
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         
-        // Check if request was successful
         if (data['result'] == 'success') {
-          // Format response to match our expected structure
           return {
             'base': data['base_code'],
             'date': data['time_last_update_utc'],
@@ -44,7 +39,6 @@ class CurrencyService {
       final data = await getExchangeRates(from);
       final rates = data['rates'] as Map<String, dynamic>;
       
-      // Check if target currency exists
       if (!rates.containsKey(to)) {
         throw Exception('Currency $to not found');
       }
@@ -56,7 +50,6 @@ class CurrencyService {
     }
   }
 
-  // Bonus: Method untuk convert dengan custom rate (kalau mau display rate-nya)
   Future<Map<String, dynamic>> convertWithDetails(
     double amount,
     String from,
@@ -86,7 +79,6 @@ class CurrencyService {
     }
   }
 
-  // Method untuk get supported currencies
   Future<List<String>> getSupportedCurrencies() async {
     try {
       final data = await getExchangeRates('USD');

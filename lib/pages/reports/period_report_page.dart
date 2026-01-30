@@ -17,27 +17,22 @@ class PeriodReportScreen extends StatefulWidget {
 
 class _PeriodReportScreenState extends State<PeriodReportScreen> {
   DateTime _selectedDate = DateTime.now();
-  String _periodType = 'month'; // month or year
+  String _periodType = 'month';
 
   @override
   Widget build(BuildContext context) {
     final transactionProvider = Provider.of<TransactionProvider>(context);
-
-    // Get date range
     final dateRange = _periodType == 'month'
         ? Helpers.getMonthRange(_selectedDate.year, _selectedDate.month)
         : {
             'start': DateTime(_selectedDate.year, 1, 1),
             'end': DateTime(_selectedDate.year, 12, 31, 23, 59, 59),
           };
-
-    // Get transactions for period
     final transactions = transactionProvider.getTransactionsByDateRange(
       dateRange['start']!,
       dateRange['end']!,
     );
 
-    // Calculate totals
     final totalIncome = transactions
         .where((t) => t.type == 'income')
         .fold<double>(0, (sum, t) => sum + t.amount);
@@ -53,7 +48,6 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              // PIXEL HEADER
               _buildPixelHeader(context),
               
               Expanded(
@@ -62,12 +56,10 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
                     children: [
                       SizedBox(height: AppConstants.spacingL),
                       
-                      // PERIOD SELECTOR
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: AppConstants.spacingXL),
                         child: Column(
                           children: [
-                            // PERIOD TYPE BUTTONS
                             FadeInSlide(
                               delay: 0,
                               child: Row(
@@ -85,12 +77,10 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
                             
                             SizedBox(height: AppConstants.spacingL),
                             
-                            // DATE NAVIGATION
                             FadeInSlide(
                               delay: 100,
                               child: Row(
                                 children: [
-                                  // PREVIOUS BUTTON
                                   BouncyCard(
                                     onTap: _previousPeriod,
                                     child: Container(
@@ -122,7 +112,6 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
                                   
                                   SizedBox(width: AppConstants.spacingM),
                                   
-                                  // DATE DISPLAY
                                   Expanded(
                                     child: BouncyCard(
                                       onTap: _selectDate,
@@ -147,7 +136,6 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
                                   
                                   SizedBox(width: AppConstants.spacingM),
                                   
-                                  // NEXT BUTTON
                                   BouncyCard(
                                     onTap: _nextPeriod,
                                     child: Container(
@@ -185,7 +173,6 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
 
                       SizedBox(height: AppConstants.spacingXXL),
 
-                      // SUMMARY CARDS
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: AppConstants.spacingXL),
                         child: Column(
@@ -230,7 +217,6 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
 
                       SizedBox(height: AppConstants.spacingXXL),
 
-                      // BAR CHART OR EMPTY STATE
                       if (transactions.isNotEmpty) ...[
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: AppConstants.spacingXL),
@@ -406,7 +392,7 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
   }
 
   // ======================
-  // PIXEL HEADER
+  // HEADER
   // ======================
   Widget _buildPixelHeader(BuildContext context) {
     return Container(
@@ -455,7 +441,7 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
   }
 
   // ======================
-  // PIXEL PERIOD BUTTON
+  // PERIOD BUTTON
   // ======================
   Widget _buildPixelPeriodButton(String label, String type, String emoji) {
     final isSelected = _periodType == type;
@@ -506,7 +492,7 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
   }
 
   // ======================
-  // PIXEL SUMMARY CARD
+  // SUMMARY CARD
   // ======================
   Widget _buildPixelSummaryCard(
     String title,
@@ -603,7 +589,6 @@ class _PeriodReportScreenState extends State<PeriodReportScreen> {
         });
       }
     } else {
-      // Year picker
       showDialog(
         context: context,
         builder: (context) {

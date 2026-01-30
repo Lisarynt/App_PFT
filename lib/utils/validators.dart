@@ -55,7 +55,6 @@ class Validators {
     return null;
   }
 
-  // Amount validator
   static String? validateAmount(String? value) {
     if (value == null || value.isEmpty) {
       return 'Jumlah tidak boleh kosong';
@@ -74,7 +73,6 @@ class Validators {
     return null;
   }
 
-  // Required field validator
   static String? validateRequired(String? value, String fieldName) {
     if (value == null || value.isEmpty) {
       return '$fieldName tidak boleh kosong';
@@ -82,16 +80,11 @@ class Validators {
     return null;
   }
 
-  // Phone number validator (Indonesia)
   static String? validatePhone(String? value) {
     if (value == null || value.isEmpty) {
       return 'Nomor telepon tidak boleh kosong';
     }
-    
-    // Remove spaces and dashes
     final cleanValue = value.replaceAll(RegExp(r'[\s-]'), '');
-    
-    // Check if starts with 08 or +62 or 62
     final phoneRegex = RegExp(r'^(08|628|\+628)[0-9]{8,11}$');
     
     if (!phoneRegex.hasMatch(cleanValue)) {
@@ -100,8 +93,6 @@ class Validators {
     
     return null;
   }
-
-  // Date validator
   static String? validateDate(DateTime? value) {
     if (value == null) {
       return 'Tanggal tidak boleh kosong';
@@ -113,8 +104,6 @@ class Validators {
     
     return null;
   }
-
-  // Budget amount validator
   static String? validateBudget(String? value, double spentAmount) {
     final validationResult = validateAmount(value);
     if (validationResult != null) return validationResult;

@@ -27,8 +27,8 @@ class BudgetApiService {
   Future<void> addBudget(BudgetModel budget) async {
     final body = budget.toJson();
     
-    print('Adding budget with userId: ${budget.userId}'); // DEBUG
-    print('Request body: $body'); // DEBUG
+    print('Adding budget with userId: ${budget.userId}');
+    print('Request body: $body');
 
     final response = await http.post(
       Uri.parse(baseUrl),
@@ -36,8 +36,8 @@ class BudgetApiService {
       body: jsonEncode(body),
     );
 
-    print('Response status: ${response.statusCode}'); // DEBUG
-    print('Response body: ${response.body}'); // DEBUG
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
 
     if (response.statusCode != 201) {
       throw Exception('Gagal menambah budget: ${response.body}');

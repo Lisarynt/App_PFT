@@ -6,7 +6,7 @@ import '../../providers/transaction_provider.dart';
 import '../../utils/constants.dart';
 import '../../utils/helpers.dart';
 
-// Import animations
+// animations
 import '../../widgets/animations/fade_in_slide.dart';
 import '../../widgets/animations/bouncy_card.dart';
 import '../../widgets/animations/animated_number.dart';
@@ -58,7 +58,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_currentIndex],
-      // PIXEL BOTTOM NAV
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           border: Border(
@@ -104,7 +103,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
       ),
-      // PIXEL FAB WITH ANIMATION
       floatingActionButton: _currentIndex == 0 || _currentIndex == 1
           ? PixelFAB(
               backgroundColor: AppColors.expense,
@@ -122,11 +120,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 }
 
-//
 // ======================
 // DASHBOARD HOME PAGE
 // ======================
-//
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -141,23 +137,20 @@ class DashboardPage extends StatelessWidget {
     final balance = transactionProvider.getBalance();
 
     return Scaffold(
-      body: PixelBackgroundApp(  // ← BACKGROUND IMAGE
+      body: PixelBackgroundApp(  
         child: SafeArea(
           child: Stack(
             children: [
-              // DECORATIVE ICONS
               Positioned(
                 top: 15,
                 right: 50,
                 child: RotatingIcon(emoji: '☀️', fontSize: 40),
               ),
 
-              // MAIN CONTENT
               SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // HEADER
                     Padding(
                       padding: EdgeInsets.all(AppConstants.spacingXL),
                       child: Column(
@@ -191,7 +184,6 @@ class DashboardPage extends StatelessWidget {
                           ),
                           SizedBox(height: AppConstants.spacingXL),
 
-                          // BALANCE CARD
                           FadeInSlide(
                             delay: 200,
                             child: Container(
@@ -212,7 +204,6 @@ class DashboardPage extends StatelessWidget {
                                     style: PixelTextStyles.h2,
                                   ),
                                   SizedBox(height: AppConstants.spacingXL),
-                                  // Income & Expense
                                   Row(
                                     children: [
                                       Expanded(
@@ -246,7 +237,6 @@ class DashboardPage extends StatelessWidget {
 
                     SizedBox(height: AppConstants.spacingM),
 
-                    // FITUR SECTION
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: AppConstants.spacingXL,
@@ -344,7 +334,7 @@ class DashboardPage extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 100), // Space for FAB
+                    const SizedBox(height: 100),
                   ],
                 ),
               ),

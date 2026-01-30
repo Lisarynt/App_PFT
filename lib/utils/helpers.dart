@@ -30,7 +30,6 @@ class Helpers {
     return months[month - 1];
   }
 
-  // Get date range for current month
   static Map<String, DateTime> getCurrentMonthRange() {
     final now = DateTime.now();
     final firstDay = DateTime(now.year, now.month, 1);
@@ -41,7 +40,6 @@ class Helpers {
     };
   }
 
-  // Get date range for specific month
   static Map<String, DateTime> getMonthRange(int year, int month) {
     final firstDay = DateTime(year, month, 1);
     final lastDay = DateTime(year, month + 1, 0, 23, 59, 59);
@@ -57,7 +55,6 @@ class Helpers {
     return (value / total) * 100;
   }
 
-  // Get greeting based on time
   static String getGreeting() {
     final hour = DateTime.now().hour;
     if (hour < 12) {
@@ -71,7 +68,6 @@ class Helpers {
     }
   }
 
-  // Shorten number (1000 -> 1K, 1000000 -> 1M)
   static String shortenNumber(double number) {
     if (number >= 1000000000) {
       return '${(number / 1000000000).toStringAsFixed(1)}B';
@@ -83,12 +79,10 @@ class Helpers {
     return number.toStringAsFixed(0);
   }
 
-  // Get color based on transaction type
   static String getTransactionTypeColor(String type) {
     return type == 'income' ? '#00D09E' : '#FF6B6B';
   }
 
-  // Parse string to double safely
   static double parseDouble(String value) {
     return double.tryParse(value.replaceAll(',', '').replaceAll('.', '')) ?? 0;
   }

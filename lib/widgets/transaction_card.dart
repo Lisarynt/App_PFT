@@ -35,7 +35,6 @@ class TransactionCard extends StatelessWidget {
           decoration: PixelDecorations.pixelCard(),
           child: Row(
             children: [
-              // EMOJI ICON WITH PIXEL BORDER
               Container(
                 width: 50,
                 height: 50,
@@ -85,12 +84,9 @@ class TransactionCard extends StatelessWidget {
               ),
               
               SizedBox(width: AppConstants.spacingS),
-              
-              // AMOUNT AND ACTIONS
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  // AMOUNT WITH ARROW
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

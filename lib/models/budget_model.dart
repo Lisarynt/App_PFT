@@ -1,9 +1,9 @@
 class BudgetModel {
-  final String? id; // dari MockAPI
+  final String? id; 
   final String userId;
   final String category;
   final double amount;
-  final String period; // monthly, weekly, yearly
+  final String period; 
   final DateTime startDate;
   final DateTime endDate;
 
@@ -17,9 +17,6 @@ class BudgetModel {
     required this.endDate,
   });
 
-  // =====================
-  // FROM JSON (MockAPI)
-  // =====================
   factory BudgetModel.fromJson(Map<String, dynamic> json) {
     return BudgetModel(
       id: json['id'],
@@ -32,9 +29,6 @@ class BudgetModel {
     );
   }
 
-  // =====================
-  // TO JSON (MockAPI)
-  // =====================
   Map<String, dynamic> toJson() {
     return {
       'userId': userId,

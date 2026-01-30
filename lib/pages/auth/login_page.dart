@@ -48,13 +48,12 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Menggunakan Container untuk membungkus seluruh body dengan background image
       body: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/img/bglogin.png'), // Background Pixel Art kamu
+            image: AssetImage('assets/img/bglogin.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -63,26 +62,24 @@ class _LoginScreenState extends State<LoginScreen> {
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(24.0),
               child: Form(
-                key: _formKey, // Logika FormKey asli kamu
+                key: _formKey, 
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // --- LOGO BARU (Pixel Coin) ---
                     Image.asset(
-                      'assets/img/logo.png', // Logo koin pixel kamu
+                      'assets/img/logo.png',
                       height: 120,
                     ),
                     const SizedBox(height: 24),
                     
-                    // Title
                     Text(
                       'Money Tracker',
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
                         color: AppColors.textDark,
-                        fontFamily: 'Minecraftia', // Font pixel kamu
+                        fontFamily: 'Minecraftia', 
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -155,15 +152,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 32),
                     
-                    // --- TOMBOL LOGIN (Style START! Merah) ---
                     Consumer<AuthProvider>(
                       builder: (context, authProvider, child) {
                         return ElevatedButton(
                           onPressed: authProvider.isLoading ? null : _handleLogin,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.redAccent, // Warna merah seperti gambar referensi
+                            backgroundColor: Colors.redAccent,
                             padding: const EdgeInsets.symmetric(vertical: 16),
-                            side: const BorderSide(color: Colors.black, width: 3), // Border tebal pixel
+                            side: const BorderSide(color: Colors.black, width: 3),
                             elevation: 8,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
@@ -179,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 )
                               : const Text(
-                                  'START!', // Teks tombol sesuai permintaan
+                                  'START!', 
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -202,7 +198,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            // Navigasi asli kamu tetap terjaga
                             Navigator.push(
                               context,
                               MaterialPageRoute(

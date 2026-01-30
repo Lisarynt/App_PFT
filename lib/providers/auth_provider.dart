@@ -16,7 +16,7 @@ class AuthProvider extends ChangeNotifier {
 
   StreamSubscription<User?>? _authSub;
 
-  // ================== GETTERS ==================
+  // GETTERS
   User? get user => _user;
   UserModel? get userModel => _userModel;
   bool get isLoading => _isLoading;
@@ -24,7 +24,7 @@ class AuthProvider extends ChangeNotifier {
   String? get errorMessage => _errorMessage;
   bool get isAuthenticated => _user != null;
 
-  // ================== CONSTRUCTOR ==================
+  // CONSTRUCTOR
   AuthProvider() {
     _authSub = FirebaseAuth.instance.authStateChanges().listen((user) async {
       _user = user;
@@ -47,7 +47,7 @@ class AuthProvider extends ChangeNotifier {
     });
   }
 
-  // ================== SIGN IN ==================
+  // SIGN IN
   Future<bool> signIn(String email, String password) async {
     _isLoading = true;
     notifyListeners();
@@ -64,7 +64,7 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  // ================== REGISTER ==================
+  // REGISTER
   Future<bool> register(String email, String password, String name) async {
     _isLoading = true;
     _errorMessage = null;
@@ -73,13 +73,12 @@ class AuthProvider extends ChangeNotifier {
     try {
       await _authService.register(email, password, name);
       
-      // Sign out setelah registrasi berhasil
       await FirebaseAuth.instance.signOut();
 
       return true;
     } catch (e) {
       _errorMessage = e.toString();
-      print('Register Error: $_errorMessage'); // Untuk debugging
+      print('Register Error: $_errorMessage'); 
       return false;
     } finally {
       _isLoading = false;
@@ -88,10 +87,8 @@ class AuthProvider extends ChangeNotifier {
   }
 
 
-  // ================== UPDATE PROFILE (INI YANG KURANG) ==================
-// ...existing code...
+  // UPDATE PROFILE
   Future<bool> updateProfile(Map<String, dynamic> data) async {
-    // fallback ke currentUser jika _user belum ter-set
     final uid = _user?.uid ?? FirebaseAuth.instance.currentUser?.uid;
     if (uid == null) return false;
 
@@ -101,7 +98,6 @@ class AuthProvider extends ChangeNotifier {
     try {
       await _authService.updateUserProfile(uid, data);
 
-      // reload user data
       try {
         _userModel = await _authService.getUserData(uid);
         print('Reloaded userModel: ${_userModel?.toMap()}'); // debug
@@ -120,7 +116,6 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-// ...existing code...
 
   // ================== SIGN OUT ==================
   Future<void> signOut() async {

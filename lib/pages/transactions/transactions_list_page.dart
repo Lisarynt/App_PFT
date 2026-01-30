@@ -36,12 +36,10 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              // PIXEL HEADER
               _buildPixelHeader(context),
               
               SizedBox(height: AppConstants.spacingL),
               
-              // FILTER CHIPS
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: AppConstants.spacingXL),
                 child: FadeInSlide(
@@ -60,7 +58,6 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
               
               SizedBox(height: AppConstants.spacingL),
               
-              // TRANSACTIONS LIST
               Expanded(
                 child: filteredTransactions.isEmpty
                     ? _buildPixelEmptyState()
@@ -99,7 +96,7 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
                       ),
               ),
               
-              SizedBox(height: 80), // Space for FAB
+              SizedBox(height: 80), 
             ],
           ),
         ),
@@ -119,10 +116,9 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
   }
 
   // ======================
-  // PIXEL HEADER
+  // HEADER
   // ======================
   Widget _buildPixelHeader(BuildContext context) {
-    // Check if can pop (opened via navigation push, not bottom nav)
     final canPop = Navigator.of(context).canPop();
     
     return Container(
@@ -137,7 +133,6 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
       ),
       child: Row(
         children: [
-          // Show back button only if can pop
           if (canPop) ...[
             BouncyCard(
               onTap: () => Navigator.pop(context),
@@ -177,7 +172,7 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
   }
 
   // ======================
-  // PIXEL FILTER CHIP
+  // FILTER CHIP
   // ======================
   Widget _buildPixelFilterChip(String label, String value, String emoji) {
     final isSelected = _filterType == value;
@@ -240,7 +235,7 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
   }
 
   // ======================
-  // PIXEL EMPTY STATE
+  // EMPTY STATE
   // ======================
   Widget _buildPixelEmptyState() {
     return Center(
@@ -277,7 +272,7 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
   }
 
   // ======================
-  // PIXEL DELETE DIALOG
+  // DELETE DIALOG
   // ======================
   void _showPixelDeleteDialog(
     BuildContext context,

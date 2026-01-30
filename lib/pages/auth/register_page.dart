@@ -42,7 +42,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (!mounted) return;
 
     if (success) {
-      // Tampilkan SnackBar terlebih dahulu
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Registrasi berhasil! Silakan login.'),
@@ -51,7 +50,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       );
       
-      // Navigasi ke login SETELAH delay
       Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted) {
           Navigator.pushReplacementNamed(context, '/login');
@@ -71,7 +69,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
 Widget build(BuildContext context) {
   return Scaffold(
-    // Kita gunakan extendBodyBehindAppBar agar background terlihat sampai ke atas
     extendBodyBehindAppBar: true, 
     appBar: AppBar(
       backgroundColor: Colors.transparent,
@@ -86,7 +83,7 @@ Widget build(BuildContext context) {
       height: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/img/bglogin.png'), // Background yang sama
+          image: AssetImage('assets/img/bglogin.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -238,7 +235,6 @@ Widget build(BuildContext context) {
                   ),
                   const SizedBox(height: 32),
                   
-                  // --- REGISTER BUTTON (Style Merah START!) ---
                   Consumer<AuthProvider>(
                     builder: (context, authProvider, child) {
                       return ElevatedButton(

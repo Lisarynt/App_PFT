@@ -1,7 +1,7 @@
 class CategoryModel {
   final String name;
   final String icon;
-  final String type; // 'income' or 'expense'
+  final String type; 
 
   CategoryModel({
     required this.name,

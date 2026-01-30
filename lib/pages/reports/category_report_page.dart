@@ -16,21 +16,16 @@ class CategoryReportScreen extends StatefulWidget {
 }
 
 class _CategoryReportScreenState extends State<CategoryReportScreen> {
-  String _reportType = 'expense'; // expense or income
+  String _reportType = 'expense'; 
 
   @override
   Widget build(BuildContext context) {
     final transactionProvider = Provider.of<TransactionProvider>(context);
     
-    // Get spending/income by category
     final categoryData = _reportType == 'expense'
         ? transactionProvider.getSpendingByCategory()
         : transactionProvider.getIncomeByCategory();
-
-    // Calculate total
     final total = categoryData.values.fold<double>(0, (sum, amount) => sum + amount);
-
-    // Sort by amount (descending)
     final sortedEntries = categoryData.entries.toList()
       ..sort((a, b) => b.value.compareTo(a.value));
 
@@ -39,7 +34,6 @@ class _CategoryReportScreenState extends State<CategoryReportScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              // PIXEL HEADER
               _buildPixelHeader(context),
               
               Expanded(
@@ -47,8 +41,6 @@ class _CategoryReportScreenState extends State<CategoryReportScreen> {
                   child: Column(
                     children: [
                       SizedBox(height: AppConstants.spacingL),
-                      
-                      // TYPE SELECTOR
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: AppConstants.spacingXL),
                         child: FadeInSlide(
@@ -112,7 +104,6 @@ class _CategoryReportScreenState extends State<CategoryReportScreen> {
 
                       SizedBox(height: AppConstants.spacingXXL),
 
-                      // PIE CHART
                       if (categoryData.isNotEmpty) ...[
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: AppConstants.spacingXL),
@@ -217,7 +208,7 @@ class _CategoryReportScreenState extends State<CategoryReportScreen> {
   }
 
   // ======================
-  // PIXEL HEADER
+  // HEADER
   // ======================
   Widget _buildPixelHeader(BuildContext context) {
     return Container(
@@ -266,7 +257,7 @@ class _CategoryReportScreenState extends State<CategoryReportScreen> {
   }
 
   // ======================
-  // PIXEL TYPE BUTTON
+  // TYPE BUTTON
   // ======================
   Widget _buildPixelTypeButton(String label, String type, String emoji) {
     final isSelected = _reportType == type;
@@ -318,7 +309,7 @@ class _CategoryReportScreenState extends State<CategoryReportScreen> {
   }
 
   // ======================
-  // PIE CHART SECTIONS
+  // CHART SECTIONS
   // ======================
   List<PieChartSectionData> _buildPieChartSections(
     List<MapEntry<String, double>> entries,
@@ -344,7 +335,7 @@ class _CategoryReportScreenState extends State<CategoryReportScreen> {
   }
 
   // ======================
-  // PIXEL CATEGORY CARD
+  // CATEGORY CARD
   // ======================
   Widget _buildPixelCategoryCard(
     String category,
@@ -359,7 +350,6 @@ class _CategoryReportScreenState extends State<CategoryReportScreen> {
         decoration: PixelDecorations.pixelCard(),
         child: Row(
           children: [
-            // EMOJI ICON
             Container(
               width: 50,
               height: 50,
@@ -400,7 +390,6 @@ class _CategoryReportScreenState extends State<CategoryReportScreen> {
               ),
             ),
             
-            // AMOUNT
             Text(
               Helpers.formatCurrency(amount),
               style: PixelTextStyles.body.copyWith(

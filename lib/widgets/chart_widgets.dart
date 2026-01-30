@@ -259,7 +259,7 @@ class CustomLineChart extends StatelessWidget {
                 lineBarsData: [
                   LineChartBarData(
                     spots: _buildSpots(),
-                    isCurved: false, // Pixel style - straight lines
+                    isCurved: false,
                     color: lineColor,
                     barWidth: 3,
                     dotData: FlDotData(

@@ -41,7 +41,7 @@ class BudgetProvider extends ChangeNotifier {
     try {
       final budgetWithUserId = BudgetModel(
         id: budget.id,
-        userId: userId, // Dari akun yang login
+        userId: userId,
         category: budget.category,
         amount: budget.amount,
         period: budget.period,
@@ -49,7 +49,7 @@ class BudgetProvider extends ChangeNotifier {
         endDate: budget.endDate,
       );
       await _apiService.addBudget(budgetWithUserId);
-      await getBudgets(userId); // refresh data
+      await getBudgets(userId);
       _errorMessage = null;
       return true;
     } catch (e) {
@@ -73,7 +73,7 @@ class BudgetProvider extends ChangeNotifier {
 
     try {
       await _apiService.updateBudget(id, budget);
-      await getBudgets(userId); // refresh data
+      await getBudgets(userId);
       _errorMessage = null;
       return true;
     } catch (e) {
@@ -92,7 +92,7 @@ class BudgetProvider extends ChangeNotifier {
 
     try {
       await _apiService.deleteBudget(id);
-      await getBudgets(userId); // refresh data
+      await getBudgets(userId);
       _errorMessage = null;
       return true;
     } catch (e) {

@@ -19,7 +19,6 @@ class ProfileScreen extends StatelessWidget {
     final transactionProvider = Provider.of<TransactionProvider>(context);
     final user = authProvider.userModel;
 
-    // Calculate statistics
     final totalTransactions = transactionProvider.transactions.length;
     final totalIncome = transactionProvider.getTotalIncome();
     final totalExpense = transactionProvider.getTotalExpense();
@@ -30,7 +29,6 @@ class ProfileScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                // PIXEL HEADER WITH PROFILE INFO
                 FadeInSlide(
                   delay: 0,
                   child: Container(
@@ -70,7 +68,6 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         SizedBox(height: AppConstants.spacingXL),
                         
-                        // AVATAR WITH PIXEL STYLE
                         Container(
                           width: 100,
                           height: 100,
@@ -128,7 +125,6 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       SizedBox(height: AppConstants.spacingL),
                       
-                      // ROW OF 2 STATS
                       Row(
                         children: [
                           Expanded(
@@ -163,7 +159,6 @@ class ProfileScreen extends StatelessWidget {
                       
                       SizedBox(height: AppConstants.spacingM),
                       
-                      // FULL WIDTH STAT
                       FadeInSlide(
                         delay: 500,
                         child: _buildPixelStatCardFull(
@@ -238,9 +233,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // ======================
-  // PIXEL STAT CARD (SMALL)
-  // ======================
   Widget _buildPixelStatCard({
     required String title,
     required String value,
@@ -286,9 +278,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // ======================
-  // PIXEL STAT CARD (FULL WIDTH)
-  // ======================
   Widget _buildPixelStatCardFull({
     required String title,
     required double value,
@@ -334,9 +323,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // ======================
-  // PIXEL MENU ITEM
-  // ======================
   Widget _buildPixelMenuItem(
     BuildContext context, {
     required String title,
@@ -394,9 +380,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // ======================
-  // PIXEL EDIT PROFILE DIALOG
-  // ======================
   void _showPixelEditProfileDialog(BuildContext context, AuthProvider authProvider) {
     final nameController = TextEditingController(text: authProvider.userModel?.name);
 
@@ -492,9 +475,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // ======================
-  // PIXEL ABOUT DIALOG
-  // ======================
   void _showPixelAboutDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -564,9 +544,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // ======================
-  // PIXEL LOGOUT DIALOG
-  // ======================
   void _showPixelLogoutDialog(BuildContext context, AuthProvider authProvider) {
     showDialog(
       context: context,

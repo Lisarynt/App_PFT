@@ -91,7 +91,6 @@ class _BudgetPlanningScreenState extends State<BudgetPlanningScreen> {
       );
     }
 
-    // Get current month spending by category
     final currentMonthTransactions =
         transactionProvider.getCurrentMonthTransactions();
 
@@ -253,7 +252,6 @@ class _BudgetPlanningScreenState extends State<BudgetPlanningScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // HEADER WITH EMOJI & CATEGORY
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -299,7 +297,6 @@ class _BudgetPlanningScreenState extends State<BudgetPlanningScreen> {
             
             SizedBox(height: AppConstants.spacingL),
 
-            // SPENT & BUDGET AMOUNTS
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -337,7 +334,6 @@ class _BudgetPlanningScreenState extends State<BudgetPlanningScreen> {
 
             SizedBox(height: AppConstants.spacingM),
 
-            // PROGRESS BAR (PIXEL STYLE)
             Container(
               height: 12,
               decoration: BoxDecoration(

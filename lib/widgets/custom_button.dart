@@ -73,7 +73,6 @@ class CustomButton extends StatelessWidget {
       );
     }
 
-    // ELEVATED BUTTON - PIXEL STYLE
     return Container(
       decoration: BoxDecoration(
         boxShadow: [

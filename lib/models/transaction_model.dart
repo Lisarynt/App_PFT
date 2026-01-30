@@ -1,7 +1,7 @@
 class TransactionModel {
   final String? id;
   final String userId;
-  final String type; // income | expense
+  final String type; 
   final double amount;
   final String category;
   final String description;
@@ -19,7 +19,6 @@ class TransactionModel {
     required this.createdAt,
   });
 
-  /// 👉 Untuk POST / PUT ke MockAPI
   Map<String, dynamic> toJson() {
     return {
       'userId': userId,
@@ -32,7 +31,6 @@ class TransactionModel {
     };
   }
 
-  /// Untuk GET dari MockAPI
   factory TransactionModel.fromJson(Map<String, dynamic> json) {
     return TransactionModel(
       id: json['id']?.toString(),

@@ -51,7 +51,6 @@ class CustomTextField extends StatelessWidget {
           vertical: AppConstants.spacingM,
         ),
         
-        // PIXEL STYLE BORDERS
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppConstants.pixelCardRadius),
           borderSide: BorderSide(

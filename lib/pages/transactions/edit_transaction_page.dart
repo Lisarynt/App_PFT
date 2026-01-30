@@ -163,7 +163,6 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              // PIXEL HEADER
               _buildPixelHeader(context),
               
               Expanded(
@@ -174,7 +173,6 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        // TYPE SELECTOR
                         FadeInSlide(
                           delay: 0,
                           child: Row(
@@ -192,7 +190,6 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                         
                         SizedBox(height: AppConstants.spacingXL),
 
-                        // AMOUNT FIELD
                         FadeInSlide(
                           delay: 100,
                           child: CustomTextField(
@@ -207,7 +204,6 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                         
                         SizedBox(height: AppConstants.spacingL),
 
-                        // CATEGORY DROPDOWN
                         FadeInSlide(
                           delay: 200,
                           child: Container(
@@ -268,7 +264,6 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                         
                         SizedBox(height: AppConstants.spacingL),
 
-                        // DATE PICKER
                         FadeInSlide(
                           delay: 300,
                           child: BouncyCard(
@@ -320,7 +315,6 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                         
                         SizedBox(height: AppConstants.spacingL),
 
-                        // DESCRIPTION FIELD
                         FadeInSlide(
                           delay: 400,
                           child: CustomTextField(
@@ -336,7 +330,6 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                         
                         SizedBox(height: AppConstants.spacingXXL),
 
-                        // SUBMIT BUTTON
                         FadeInSlide(
                           delay: 500,
                           child: Consumer<TransactionProvider>(
@@ -364,7 +357,7 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
   }
 
   // ======================
-  // PIXEL HEADER
+  // HEADER
   // ======================
   Widget _buildPixelHeader(BuildContext context) {
     return Container(
@@ -413,7 +406,7 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
   }
 
   // ======================
-  // PIXEL TYPE BUTTON
+  // TYPE BUTTON
   // ======================
   Widget _buildPixelTypeButton(String label, String type, String emoji) {
     final isSelected = _type == type;
@@ -423,7 +416,6 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
       onTap: () {
         setState(() {
           _type = type;
-          // Reset category if type changes and current category not in new list
           if (!_categories.contains(_selectedCategory)) {
             _selectedCategory = null;
           }
